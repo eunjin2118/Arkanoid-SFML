@@ -10,16 +10,16 @@ void main(void)
 	app.setFramerateLimit(60);
 	
 	Texture t1, t2, t3, t4;
-	t1.loadFromFile("imgaes/block01.png");
-	t2.loadFromFile("imgaes/background.jpg");
-	t3.loadFromFile("imgaes/bail.png");
-	t4.loadFromFile("imgaes/paddle.png");
+	t1.loadFromFile("images/block01.png");
+	t2.loadFromFile("images/background.jpg");
+	t3.loadFromFile("images/ball.png");
+	t4.loadFromFile("images/paddle.png");
 
 	Sprite sBackground(t2), sBall(t3), sPaddle(t4);
 	sPaddle.setPosition(300, 400);
 	sBall.setPosition(300, 300);
 
-	Sprite block[1000];
+	Sprite block[200];
 	int n = 0;
 	for (int x = 1; x <= 10; x++) {
 		for (int y = 0; y <= 10; y++) {
