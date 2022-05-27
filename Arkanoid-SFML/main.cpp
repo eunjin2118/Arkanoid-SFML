@@ -28,6 +28,9 @@ void main(void)
 			n++;
 		}
 	}
+	
+	// 숫자 -> 이동하는 속도조절 + 각도조절
+	float dx = 6.0f, dy = 5.0f;
 
 	while (app.isOpen()) {
 		Event e;
@@ -35,6 +38,10 @@ void main(void)
 			if (e.type == Event::Closed)
 				app.close();
 		}
+		// 공 움직이기
+		sBall.move(dx, 0);
+		sBall.move(0, dy);
+
 		app.clear();
 		app.draw(sBackground);
 		app.draw(sBall);
