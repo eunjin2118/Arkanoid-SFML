@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#define WIDTH  520
+#define HEIGHT  450
 
 using namespace sf;
 
@@ -7,7 +9,7 @@ bool isCollide(Sprite s1, Sprite s2);
 void main(void)
 {
 	// window창 생성
-	RenderWindow app(VideoMode(520, 450), "BB");
+	RenderWindow app(VideoMode(WIDTH, HEIGHT), "BB");
 	app.setFramerateLimit(60);
 
 	Texture t1, t2, t3, t4;
@@ -70,9 +72,9 @@ void main(void)
 		Vector2f b = sBall.getPosition();
 
 		// 화면 바깥쪽 테두리에 충돌하는 경우
-		if (b.x < 0 || b.x>520)
+		if (b.x < 0 || b.x> WIDTH)
 			dx = -dx;
-		if (b.y < 0 || b.y > 450)
+		if (b.y < 0 || b.y > HEIGHT)
 			dy = -dy;
 
 		// 키보드에 따라 paddle이 움직임
