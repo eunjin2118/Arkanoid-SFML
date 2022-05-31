@@ -2,6 +2,8 @@
 
 using namespace sf;
 
+bool isCollide(Sprite s1, Sprite s2);
+
 void main(void)
 {
 	// window창 생성
@@ -43,6 +45,16 @@ void main(void)
 		}
 		// 공 움직이기
 		sBall.move(dx, 0);
+		for (int i = 0; i < n; i++)
+		{
+			if (isCollide(sBall, block[i])) // 공이랑 블럭이랑 충돌한다면
+			{
+				dx = -dx;
+				// 벽돌을 시야에서 사라지게 함
+				block[i].setPosition(-300, 0);
+			}
+		}
+
 		sBall.move(0, dy);
 
 		// 볼의 위치(좌표)
@@ -64,4 +76,11 @@ void main(void)
 		app.display();
 	}
 
+}
+
+bool isCollide(Sprite s1, Sprite s2)
+{
+	return s1.getGlobalBounds().intersects(s2.getGlobalBounds());
+	// 그림은 일반적으로 다 사각형(공도 사각형) intersect(교집합의 의미) 
+	// 둘 사이에 교집합이 존재한는지 물어보는 코드
 }
