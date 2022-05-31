@@ -56,6 +56,15 @@ void main(void)
 		}
 
 		sBall.move(0, dy);
+		for (int i = 0; i < n; i++)
+		{
+			if (isCollide(sBall, block[i])) // 공이랑 블럭이랑 충돌한다면
+			{
+				dy = -dy;
+				// 벽돌을 시야에서 사라지게 함
+				block[i].setPosition(-300, 0);
+			}
+		}
 
 		// 볼의 위치(좌표)
 		Vector2f b = sBall.getPosition();
@@ -65,6 +74,14 @@ void main(void)
 			dx = -dx;
 		if (b.y < 0 || b.y > 450)
 			dy = -dy;
+
+		// 키보드에 따라 paddle이 움직임
+		if (Keyboard::isKeyPressed(Keyboard::Right)) //오른쪽 키 누르면 움직이기
+			sPaddle.move(5.0f, 0.0f);
+
+		if (Keyboard::isKeyPressed(Keyboard::Left)) //오른쪽 키 누르면 움직이기
+			sPaddle.move(-5.0f, 0.0f);
+
 
 		app.clear();
 		app.draw(sBackground);
