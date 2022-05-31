@@ -82,6 +82,10 @@ void main(void)
 		if (Keyboard::isKeyPressed(Keyboard::Left)) //오른쪽 키 누르면 움직이기
 			sPaddle.move(-5.0f, 0.0f);
 
+		if (isCollide(sPaddle, sBall))
+		{
+			dy = -dy;
+		}
 
 		app.clear();
 		app.draw(sBackground);
